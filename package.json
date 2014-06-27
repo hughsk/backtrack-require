@@ -1,0 +1,40 @@
+{
+  "name": "backtrack-require",
+  "version": "1.0.0",
+  "description": "Given an entry file and a target file, track down any files that are requiring the target file",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "backtrack-require": "bin.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
+  "dependencies": {
+    "detective": "^3.1.0",
+    "map-limit": "0.0.0",
+    "once": "^1.3.0",
+    "resolve": "^0.7.1"
+  },
+  "devDependencies": {
+    "tape": "^2.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hughsk/backtrack-require.git"
+  },
+  "keywords": [
+    "recursive",
+    "require",
+    "static",
+    "analysis",
+    "check",
+    "backtrack",
+    "reverse"
+  ],
+  "homepage": "https://github.com/hughsk/backtrack-require",
+  "bugs": {
+    "url": "https://github.com/hughsk/backtrack-require/issues"
+  }
+}
