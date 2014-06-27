@@ -1,6 +1,6 @@
 {
   "name": "backtrack-require",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Given an entry file and a target file, track down any files that are requiring the target file",
   "main": "index.js",
   "license": "MIT",
