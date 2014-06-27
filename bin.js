@@ -12,10 +12,13 @@ if (!entry) return usage()
 if (!target) return usage()
 
 backtrack(entry, target, function(err, files) {
-  if (err) throw err
-
-
   console.log(files.map(function(file) {
     return path.relative(cwd, file)
   }).join('\n'))
 })
+
+function usage() {
+  return console.log(fs.readFileSync(
+    __dirname + '/usage.txt', 'utf8'
+  ))
+}

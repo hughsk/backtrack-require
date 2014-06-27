@@ -12,6 +12,7 @@ function backtrack(entry, target, done) {
   var checked = {}
   var pending = 0
   var queue = []
+  var error
 
   entry  = path.resolve(entry)
   target = path.resolve(target)
@@ -32,11 +33,10 @@ function backtrack(entry, target, done) {
         resolve(child, {
           basedir: path.dirname(file)
         }, function(err, resolved) {
-          return next(err, resolved !== child && resolved)
+          if (err) error = err
+          return next(null, resolved !== child && resolved)
         })
       }, function(err, files) {
-        if (err) return done(err)
-
         files = files.filter(Boolean)
         queue.push.apply(queue, files)
 
@@ -57,6 +57,6 @@ function backtrack(entry, target, done) {
       check(queue.pop())
 
     if (!queue.length && !pending)
-      return done(null, parents)
+      return done(error || null, parents)
   }
 }
