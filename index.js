@@ -11,6 +11,7 @@ function backtrack(entry, target, done) {
   var parents = []
   var checked = {}
   var pending = 0
+  var cache = {}
   var queue = []
   var error
 
@@ -34,7 +35,9 @@ function backtrack(entry, target, done) {
           basedir: path.dirname(file)
         }, function(err, resolved) {
           if (err) error = err
-          return next(null, resolved !== child && resolved)
+          if (!resolved) return next()
+          if (resolved === child) return next()
+          fs.realpath(resolved, cache, next)
         })
       }, function(err, files) {
         files = files.filter(Boolean)
